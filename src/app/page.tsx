@@ -1,59 +1,39 @@
-import LogoAnimation from "@/components/logo-animation";
+
 import MenuDisplay from "@/components/menu-display";
-import AIAssistant from "@/components/ai-assistant";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import AIPopupButton from "@/components/ai-popup-button";
+
+// This menu string will be used by the AI model. 
+// In a real app, this might be dynamically fetched or parsed from a PDF.
+const MENU_STRING = `
+Appetizers:
+- Bruschetta (Tomato, basil, garlic on toasted bread) - $8
+- Caprese Salad (Fresh mozzarella, tomatoes, basil, balsamic glaze) - $10
+- Garlic Knots (Served with marinara sauce) - $7
+
+Main Courses:
+- Spaghetti Carbonara (Pasta with pancetta, egg, Parmesan cheese, black pepper) - $15
+- Grilled Salmon (Served with roasted vegetables and lemon-dill sauce) - $20
+- Margherita Pizza (Tomato sauce, mozzarella, fresh basil) - $14
+- Vegetarian Lasagna (Layers of pasta, ricotta, spinach, marinara, mozzarella) - $16
+- Chicken Alfredo (Fettuccine pasta with creamy Alfredo sauce and grilled chicken) - $18
+
+Desserts:
+- Tiramisu (Coffee-soaked ladyfingers, mascarpone cream, cocoa powder) - $7
+- Panna Cotta (Italian cooked cream dessert with berry coulis) - $6
+- Chocolate Lava Cake (Warm chocolate cake with a molten center, served with vanilla ice cream) - $9
+
+Drinks:
+- Mineral Water (Still or Sparkling) - $2
+- Soft Drinks (Coke, Diet Coke, Sprite, Fanta) - $3
+- Fresh Orange Juice - $4
+- House Wine (Red or White, per glass) - $8
+`;
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col items-center min-h-screen p-4 pt-8 space-y-8 md:p-8 md:pt-12 bg-background text-foreground">
-      <LogoAnimation />
-      
-      <header className="text-center">
-        <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary">
-          Welcome to OrderFlow
-        </h1>
-        <p className="mt-2 text-lg text-muted-foreground font-body">
-          Effortless ordering with our AI-powered assistant.
-        </p>
-      </header>
-
-      <div className="w-full max-w-5xl space-y-8">
-        <section id="menu" aria-labelledby="menu-heading">
-          <Card className="shadow-xl overflow-hidden">
-            <CardHeader className="bg-card">
-              <CardTitle id="menu-heading" className="text-3xl font-headline text-primary">
-                Our Menu
-              </CardTitle>
-              <CardDescription>
-                Scroll to explore our delicious offerings.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="p-0 md:p-0"> {/* Adjusted padding for better fit of MenuDisplay */}
-              <MenuDisplay />
-            </CardContent>
-          </Card>
-        </section>
-
-        <section id="ai-assistant" aria-labelledby="ai-assistant-heading">
-          <Card className="shadow-xl overflow-hidden">
-            <CardHeader className="bg-card">
-              <CardTitle id="ai-assistant-heading" className="text-3xl font-headline text-primary">
-                AI Powered Ordering
-              </CardTitle>
-              <CardDescription>
-                Let our AI assistant help you place your order in multiple languages.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="p-4 md:p-6">
-              <AIAssistant />
-            </CardContent>
-          </Card>
-        </section>
-      </div>
-
-      <footer className="py-8 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} OrderFlow. All rights reserved.</p>
-      </footer>
-    </main>
+    <div className="relative min-h-screen w-full">
+      <MenuDisplay />
+      <AIPopupButton menu={MENU_STRING} />
+    </div>
   );
 }
