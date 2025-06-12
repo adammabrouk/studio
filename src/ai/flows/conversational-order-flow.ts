@@ -43,7 +43,6 @@ const conversationalOrderFlow = ai.defineFlow(
     const { message, menu, language, history } = input;
 
     // System context to guide the AI.
-    // This will be part of the prompt sent to the AI model.
     const systemContext = `You are a friendly and highly efficient AI assistant for "OrderFlow" restaurant.
 Your primary goal is to help users explore the menu and place food orders accurately.
 Converse with the user in ${language}.
@@ -59,21 +58,15 @@ Key Instructions:
 - You can confirm items and summarize the order before the user finalizes it.
 - Do not make up items or prices. Stick to the provided menu.
 - If the user asks for your capabilities, explain you can help them browse the menu, answer questions about items, and take their order.
+- **Upselling:** Proactively look for opportunities to suggest complementary items from the menu to enhance the user's meal. For example, if they order a main course, you could suggest a popular appetizer, drink, or dessert. If they order just an appetizer, perhaps suggest a main course that pairs well.
+- When upselling, be natural and helpful, not pushy. Phrase suggestions like 'Would you like to add a drink with that?' or 'Our Bruschetta is a popular starter, would you like to try it?' Base your suggestions on the current order and the menu provided.
 `;
 
-    // Construct the prompt for the ai.generate call.
-    // The user's current message is the main part of this turn's prompt.
-    // The systemContext provides overall guidance.
-    // The history provides conversational context.
     const currentPromptForGenerate = `${systemContext}\nThe user's current message is: "${message}". Please respond.`;
     
     const { output } = await ai.generate({
       prompt: currentPromptForGenerate,
-      history: history || [], // Pass the conversation history.
-      // The model will be the default one configured in @/ai/genkit.ts (gemini-2.0-flash)
-      // config: { // Optional: Add safetySettings or other model-specific configs if needed
-      //   temperature: 0.7, 
-      // },
+      history: history || [], 
     });
 
     if (!output || typeof output.text !== 'string') {
@@ -84,3 +77,4 @@ Key Instructions:
     return { response: output.text };
   }
 );
+
