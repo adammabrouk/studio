@@ -25,9 +25,9 @@ interface InteractiveAssistantProps {
 
 // Map language codes to VAPI Assistant IDs
 const ASSISTANT_IDS: Record<string, string> = {
-    en: 'e20e240c-ce7d-4616-a8e5-b76066906d87',
-    ru: 'YOUR_RUSSIAN_ASSISTANT_ID', // Replace with your Russian VAPI Assistant ID
-    ro: 'f3d7dd8d-247c-48f0-aed3-12f4df377bd9',
+  en: 'e20e240c-ce7d-4616-a8e5-b76066906d87',
+  ru: 'db3716bf-502a-4d70-816f-8f25c9a11a77',
+  ro: 'f3d7dd8d-247c-48f0-aed3-12f4df377bd9',
 };
  // Replace with your VAPI Public API Key
  const VAPI_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_VAPI_PUBLIC_API_KEY || 'YOUR_VAPI_PUBLIC_API_KEY'; // Consider using environment variables
