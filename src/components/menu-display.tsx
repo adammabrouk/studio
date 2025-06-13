@@ -6,9 +6,10 @@ const MenuDisplay = () => {
     <div className="fixed inset-0 -z-10 overflow-auto">
       <div className="w-screen h-screen">
         <iframe
-          src="/menu.pdf"
-          className="w-full h-full opacity-90"
+          src="/menu.pdf#zoom=Fit"
+          className="w-full h-full opacity-90 overflow-auto"
           title="Amano restaurant Menu PDF"
+          style={{ overflow: "auto" }}
         ></iframe>
       </div>
     </div>
