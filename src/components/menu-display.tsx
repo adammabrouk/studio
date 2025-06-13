@@ -1,22 +1,17 @@
 
 "use client";
 
-import Image from "next/image";
-
 const MenuDisplay = () => {
   return (
     <div className="fixed inset-0 w-screen h-screen -z-10">
-      <Image
-        src="https://placehold.co/1200x1697.png" 
-        alt="Restaurant Menu Background"
-        layout="fill"
-        objectFit="cover"
-        className="opacity-90" 
-        data-ai-hint="restaurant menu page"
-        priority
-      />
+      <iframe
+        src="/menu.pdf"
+        className="w-full h-full opacity-90"
+        title="Amano restaurant Menu PDF"
+      ></iframe>
     </div>
   );
 };
 
 export default MenuDisplay;
+
