@@ -4,13 +4,13 @@
 const MenuDisplay = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-auto">
-      <div className="w-screen h-screen">
+      {/* Add a container for better mobile scrolling control */}
+      <div className="w-full h-full overflow-auto">
         <iframe
           src="/menu.pdf#zoom=Fit"
-          className="w-full h-full opacity-90 overflow-auto"
+          className="w-full h-full opacity-90"
           title="Amano restaurant Menu PDF"
-          style={{ overflow: "auto" }}
-        ></iframe>
+        ></iframe> 
       </div>
     </div>
   );
